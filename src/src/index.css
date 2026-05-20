@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* IntractctVid — Neon Cyberpunk Design System
+   All colors HSL. No hex in components.
+*/
+
+@layer base {
+  :root {
+    /* Default = dark cyberpunk (intended). Light mode is for the toggle. */
+    --background: 232 47% 6%;
+    --foreground: 190 100% 92%;
+
+    --card: 232 40% 10%;
+    --card-foreground: 190 100% 94%;
+
+    --popover: 232 50% 8%;
+    --popover-foreground: 190 100% 94%;
+
+    --primary: 186 100% 52%;        /* electric cyan */
+    --primary-foreground: 232 60% 6%;
+
+    --secondary: 295 100% 60%;      /* magenta */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 232 30% 14%;
+    --muted-foreground: 220 20% 65%;
+
+    --accent: 270 95% 65%;          /* violet */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 350 95% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 150 85% 55%;
+    --warning: 45 100% 60%;
+
+    --border: 232 40% 18%;
+    --input: 232 40% 14%;
+    --ring: 186 100% 52%;
+
+    --radius: 0.85rem;
+
+    /* Brand gradients */
+    --gradient-neon: linear-gradient(135deg, hsl(186 100% 52%), hsl(270 95% 65%) 50%, hsl(295 100% 60%));
+    --gradient-cyber: linear-gradient(135deg, hsl(232 47% 6%) 0%, hsl(245 60% 12%) 50%, hsl(280 60% 15%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(232 60% 18% / 0.6), hsl(232 60% 10% / 0.3));
+    --gradient-card: linear-gradient(145deg, hsl(232 50% 12% / 0.9), hsl(232 50% 8% / 0.7));
+
+    /* Glow shadows */
+    --glow-cyan: 0 0 24px hsl(186 100% 52% / 0.45), 0 0 60px hsl(186 100% 52% / 0.2);
+    --glow-magenta: 0 0 24px hsl(295 100% 60% / 0.45), 0 0 60px hsl(295 100% 60% / 0.2);
+    --glow-violet: 0 0 24px hsl(270 95% 65% / 0.45);
+    --shadow-elevated: 0 18px 60px -10px hsl(232 80% 2% / 0.7);
+
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Sidebar */
+    --sidebar-background: 232 50% 7%;
+    --sidebar-foreground: 190 60% 88%;
+    --sidebar-primary: 186 100% 52%;
+    --sidebar-primary-foreground: 232 60% 6%;
+    --sidebar-accent: 232 40% 14%;
+    --sidebar-accent-foreground: 186 100% 80%;
+    --sidebar-border: 232 40% 16%;
+    --sidebar-ring: 186 100% 52%;
+  }
+
+  .light {
+    --background: 220 30% 97%;
+    --foreground: 232 47% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 232 47% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 232 47% 8%;
+    --primary: 186 90% 38%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 295 80% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 20% 92%;
+    --muted-foreground: 232 20% 40%;
+    --accent: 270 80% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 350 80% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 85%;
+    --input: 220 20% 90%;
+    --ring: 186 90% 38%;
+
+    --gradient-cyber: linear-gradient(135deg, hsl(220 30% 97%), hsl(220 40% 92%));
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.7), hsl(220 40% 95% / 0.5));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 30% 96%));
+    --shadow-elevated: 0 18px 50px -15px hsl(232 40% 30% / 0.18);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 232 30% 20%;
+    --sidebar-primary: 186 90% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 94%;
+    --sidebar-accent-foreground: 232 47% 12%;
+    --sidebar-border: 220 20% 88%;
+    --sidebar-ring: 186 90% 38%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+
+  html { font-family: 'Inter', system-ui, sans-serif; }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image: var(--gradient-cyber);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .glass {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid hsl(var(--border) / 0.7);
+  }
+
+  .glass-card {
+    background: var(--gradient-card);
+    backdrop-filter: blur(14px);
+    border: 1px solid hsl(var(--primary) / 0.15);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .neon-text {
+    background: var(--gradient-neon);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .neon-border {
+    position: relative;
+    border: 1px solid hsl(var(--primary) / 0.4);
+    box-shadow: var(--glow-cyan);
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(var(--primary) / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .scanline::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      transparent 50%,
+      hsl(var(--primary) / 0.03) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+}
+
+@layer utilities {
+  .glow-cyan { box-shadow: var(--glow-cyan); }
+  .glow-magenta { box-shadow: var(--glow-magenta); }
+  .glow-violet { box-shadow: var(--glow-violet); }
+
+  .text-glow-cyan { text-shadow: 0 0 12px hsl(var(--primary) / 0.7); }
+
+  .transition-smooth { transition: all 0.3s var(--transition-smooth); }
+}
+
+/* Animations */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.4); }
+  50% { box-shadow: 0 0 40px hsl(var(--primary) / 0.8); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
